@@ -31,8 +31,27 @@ class Blockchain{
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
     }
+
+    isValid(){
+        for (let i = 1; i < this.chain.length; i++) {
+            const currentBlock = this.chain[i];
+            const previousBlock = this.chain[i - 1];
+
+            if (currentBlock.hash !== currentBlock.calculateHash()) {
+                return false;
+            }
+
+            if (currentBlock.previousHash !== previousBlock.hash) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
-let studentcoin=new Blockchain();
-studentcoin.addBlock(new Block(1, "07/12/2025", { usn: "4KV23CS001", name: "Adam", branch: "CSE" , sem: 5}));
-studentcoin.addBlock(new Block(2, "07/12/2025", { usn: "4KV23CS0", name: "Eve", branch: "CSE" , sem: 5}));
-console.log(JSON.stringify(studentcoin, null, 4));
+let studentCoin=new Blockchain();
+studentCoin.addBlock(new Block(1, "07/12/2025", { usn: "4KV23CS001", name: "Adam", branch: "CSE" , sem: 5}));
+studentCoin.addBlock(new Block(2, "07/12/2025", { usn: "4KV23CS0", name: "Eve", branch: "CSE" , sem: 5}));
+
+console.log("Is the chain valid " + studentCoin.isValid());
+console.log(JSON.stringify(studentCoin, null, 4));
