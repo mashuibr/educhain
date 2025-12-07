@@ -8,11 +8,11 @@ This is my personal learning project to understand blockchain technology for bui
 
 ## 🎯 Learning Objectives
 
-- [ ] Understand what a blockchain is and how it works
-- [ ] Learn about cryptographic hashing (SHA256)
-- [ ] Implement block creation and linking
-- [ ] Build chain validation mechanisms
-- [ ] Add proof of work (consensus mechanism) - Coming Soon
+- [x] Understand what a blockchain is and how it works
+- [x] Learn about cryptographic hashing (SHA256)
+- [x] Implement block creation and linking
+- [x] Build chain validation mechanisms
+- [x] Add proof of work (consensus mechanism)
 - [ ] Implement smart contracts/business logic - Coming Soon
 - [ ] Create a peer-to-peer network - Coming Soon
 - [ ] Build APIs for DApp interaction - Coming Soon
@@ -79,11 +79,34 @@ class Block {
 - Tested adding multiple blocks
 - Verified blockchain validation works
 
-### 🔜 Concept 4: Proof of Work (Coming Next)
-**What I'll Learn:**
-- How mining works
-- Difficulty adjustment
-- Why proof of work is necessary
+### ✅ Concept 4: Proof of Work (Mining)
+**What I Learned:**
+- Mining uses computational power to "prove" work was done before creating a block
+- Difficulty setting controls how hard it is to mine a block (number of leading zeros in hash)
+- Nonce is incremented until the hash meets the difficulty requirement
+- This prevents spam and secures the blockchain against tampering
+
+**What I Built:**
+- Added `nonce` property to Block class
+- Implemented `mineBlock(difficulty)` method that finds valid hash
+- Set blockchain difficulty level (currently 10)
+- Tested mining with student records
+
+**Challenges:**
+- Understanding why we need proof of work
+- Balancing difficulty (higher = more secure but slower)
+- Watching the mining process in action
+
+**Code:**
+```javascript
+mineBlock(difficulty) {
+    while(this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")) {
+        this.nonce++;
+        this.hash = this.calculateHash();
+    }
+    console.log("Block mined: " + this.hash);
+}
+```
 
 ## 🛠️ Current Implementation
 
@@ -93,10 +116,16 @@ class Block {
 - Adding blocks to the chain
 - Chain validation (integrity checking)
 - Student data storage
+- Proof of Work (Mining) with adjustable difficulty
+- Nonce-based hash generation
 
 ### Coming Next 🔜
-- [ ] Proof of Work (Consensus mechanism)
+- [ ] Proof of Stake consensus mechanism
 - [ ] Smart contract functionality
+- [ ] Transaction pools and mempool
+- [ ] Merkle trees for efficient verification
+- [ ] Peer-to-peer networking
+- [ ] REST API for DApp interaction
 - [ ] Data query and retrieval system
 - [ ] Access control and permissions
 - [ ] REST API for DApp interface
@@ -169,7 +198,7 @@ educhain/
 - [x] Blockchain class
 - [x] Chain validation
 - [x] Data storage (student records)
-- [ ] Proof of work implementation
+- [x] Proof of work implementation
 - [ ] Smart contract logic
 - [ ] Data access system
 - [ ] Network layer
