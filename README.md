@@ -110,7 +110,7 @@ class Block {
 **Setup:**
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/mashuibr/educhain.git
 cd educhain
 
 # Install dependencies
