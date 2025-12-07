@@ -111,7 +111,7 @@ class Block {
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd studentchain
+cd educhain
 
 # Install dependencies
 npm install
@@ -123,7 +123,7 @@ node main.js
 ## 📁 Project Structure
 
 ```
-studentchain/
+educhain/
 ├── main.js          # Complete blockchain implementation
 ├── package.json     # Dependencies (crypto-js)
 └── README.md        # This learning journal
