@@ -63,6 +63,16 @@ class Blockchain{
 }
 let studentCoin=new Blockchain();
 
+let diff=2;
+let nons=0;
+let test= new Block(1, "07/12/2025", { usn: "4KV23CS001", name: "Adam", branch: "CSE" , sem: 5});
+console.log(test.hash);
+while(test.hash.substring(0, diff) !== Array(diff + 1).join("0")){
+    nons++;
+    test.hash=test.calculateHash();
+}
+console.log(test.hash);
+
 console.log("Mining block 1...");
 studentCoin.addBlock(new Block(1, "07/12/2025", { usn: "4KV23CS001", name: "Adam", branch: "CSE" , sem: 5}));
 console.log("Mining block 2...");
